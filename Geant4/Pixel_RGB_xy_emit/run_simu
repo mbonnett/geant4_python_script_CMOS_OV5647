@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for (( counter=0; counter<500; counter++ ))
+do
+ echo "creating file $counter"
+ ./pixel Sr90_init_vis.mac >>/dev/null 
+ ./ascii2array8bit.py 0 $counter
+ tar -cjvf "Yz0f$counter.tar.bz2" *.csv *.root
+done
+

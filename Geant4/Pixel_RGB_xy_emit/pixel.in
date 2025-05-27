@@ -1,0 +1,9 @@
+#
+# Macro file for pixel
+#
+/run/initialize
+#
+/control/verbose 2
+#
+/run/printProgress 1000
+/run/beamOn 10000

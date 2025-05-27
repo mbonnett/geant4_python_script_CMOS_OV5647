@@ -1,0 +1,82 @@
+# Macro file for the initialization of pixel
+# in interactive session
+#
+# Set some default verbose
+#/pixel/det/setFilename miki
+
+/control/verbose 2
+/control/saveHistory
+/run/verbose 2
+
+/pixel/run/setThreshold 0 eV
+
+/pixel/det/setDistance_SD 0 mm
+
+/pixel/det/setDetec_substra true
+/pixel/det/setSi_substrat_thick 225 um
+
+/pixel/det/setDetec_shield true
+/pixel/det/setDetc_shield_thick 200 um
+
+#/pixel/det/setpixel_x 1.4 um #1.4 um
+#/pixel/det/setpixel_y 1.4 um #1.4 um
+/pixel/det/setpixel_z 5 um #  10-20 µm
+/pixel/det/setpixels_gap 0.0 um
+#/pixel/det/setN_pixel_x 1296 #1296 #2592
+#/pixel/det/setN_pixel_y 972 #972 #1944
+
+#/pixel/run/setN_pixel_x 1296
+#/pixel/run/setN_pixel_y 972
+
+
+/pixel/run/setFilename miki
+/pixel/run/setSource Sr90
+#/pixel/run/setSource Cs137
+#/pixel/run/setSource Fe55
+
+/pixel/det/setSource Sr90
+#/pixel/det/setSource Cs137
+#/pixel/det/setSource Fe55
+#
+#
+# Change the default number of threads (in multi-threaded mode)
+#/run/numberOfThreads 4
+
+#
+# Initialize kernel
+/run/initialize
+#
+
+/gps/particle ion
+#/gps/ion 86 55
+
+# set ion: Atomic Number and Weight (e.g., "38 90" for Sr90, "55 137" for Cs137, etc.)
+/gps/ion 38 90 #Sr90
+#/gps/ion 55 137 #Cs137
+#/gps/ion 95 241 #Am241
+
+# Cylindrical source
+/gps/pos/type Surface
+/gps/pos/shape Cylinder
+/gps/pos/radius 3175  um
+/gps/pos/halfz  1587.5 um
+
+#/gps/ion 26 55	#Fe55
+#
+# Cylindrical source
+#/gps/pos/type Surface
+#/gps/pos/shape Cylinder
+#/gps/pos/radius 6 mm
+#/gps/pos/halfz 125 um
+
+
+# Visualization setting
+/control/execute vis.mac
+/vis/viewer/set/viewpointThetaPhi 90. 180.
+
+#/analysis/setFileName Sr90
+#/analysis/setActivatio false
+#/analysis/h1/set  3 200 0 3 keV log10
+#/analysis/h1/setAscii 4
+/run/beamOn 13388
+#/run/beamOn 10000000
